@@ -1,0 +1,13 @@
+# 1) Abstraction:
+In object-oriented programming, abstraction is the practice of hiding implementation details and exposing only the necessary functionality to the user. This is achieved by defining a class with relevant methods that the user can call without needing to know how they are implemented. If the internal implementation changes, it does not affect the end user, as long as the method signatures remain the same.
+
+
+# 2) Incapsulation:
+
+Encapsulation in TypeScript ensures controlled access to class properties using access modifiers: public, protected, and private. Public members are accessible everywhere, but caution is needed since JavaScript defaults to public. Protected members can be accessed within the class and its subclasses but not from object instances. Private members are completely hidden and can only be accessed inside the class, requiring getters and setters for controlled interaction. This helps in data security, controlled modifications, and maintainability by restricting direct access to sensitive data while allowing safe interactions through methods
+
+# 3) Inharitance:
+Inheritance is an OOP concept where a child class derives properties and behaviors from a parent class, enabling code reusability and hierarchy-based structure. The child class can override or extend the parent’s methods, allowing for dynamic behavior customization. This supports subtype polymorphism, where child objects can be used wherever the parent type is expected, making the code scalable, maintainable, and flexible. For example, a Shape class with a draw() method can have subclasses like Circle and Square, each providing its own draw() implementation, yet all can be treated as Shape objects. 
+
+# 4) Polymorphism:
+inheritance-based polymorphism, allows objects of a child class to be used interchangeably where a parent class type is expected. This is achieved through method overriding, where the child class provides a specific implementation of a method defined in the parent class. The key benefit of subtype polymorphism is that it enables loose coupling, meaning code can work with the parent class type without needing to know the specific child class being used. This makes it easy to extend applications—new child classes can be introduced without modifying existing logic. For example, a Vehicle class with a move() method can have subclasses like Car and Bike, each implementing move() differently. Yet, a function expecting a Vehicle type can handle both seamlessly.
