@@ -1,39 +1,53 @@
-interface IAccount {
-  getName: () => string;
-  getAmount: () => number;
-}
-
-interface ISavingAccount extends IAccount {
-  getPersonalLoan: () => void;
-}
-
-class Account implements IAccount {
-  private name: string;
-  private amount: number;
-  private accountId: number;
-  constructor(name: string, amount: number = 0) {
-    this.accountId = Date.now();
-    this.amount = amount;
+class Product {
+  public id: number;
+  constructor(public name: string, public price: number) {
+    this.id = Date.now();
     this.name = name;
-  }
-  getName = () => {
-    return this.name;
-  };
-
-  getAmount = () => this.amount;
-}
-
-const acc1 = new Account("sid");
-console.log(acc1.getName());
-
-class SavingAccount extends Account implements ISavingAccount {
-  constructor(name: string, amount: number = 0) {
-    super(name, amount);
+    this.price = price;
   }
 
-  getPersonalLoan = () => "calll mangaer for loan";
+  display(): Record<string, any> {
+    return { ...this };
+  }
 }
-const sAcc1 = new SavingAccount("aman", 1000);
-console.log(sAcc1.getPersonalLoan());
 
-class CurrentAccount {}
+const product1 = new Product("Laptop", 100);
+
+class Book extends Product {
+  constructor(
+    price: number,
+    public authorName: string,
+    public bookTitle: string
+  ) {
+    super("Book", price);
+    this.authorName = authorName;
+    this.bookTitle = bookTitle;
+  }
+}
+
+const book1 = new Book(200, "striver", "Data structure and algo");
+
+console.log(book1.display());
+
+class Electronics extends Product {
+  constructor(price: number, public brand: string, public model: string) {
+    super("Electronic", price);
+    this.brand = brand;
+    this.model = model;
+  }
+
+  //ovewrite the display method
+  display() {
+    //we can still use the parent define fucniton even tought we override them
+    console.log(super.display());
+    return {
+      name: this.name,
+      brand: this.brand,
+      mode: this.model,
+    };
+  }
+}
+
+const Electronic1 = new Electronics(2000, "LG", "x1-03");
+
+console.log(Electronic1.display());
